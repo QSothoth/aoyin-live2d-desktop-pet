@@ -1,0 +1,14 @@
+60e55464e111b1c78216d3210d920d8532b0eadba75a358f941784797ef6578e  Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe
+99ea573358d225dfabca84f251de5884810ad3d9a17b750599806ecf6b2a53d8  Aoyin-Desktop-Pet-0.1.0-mac-x64.tar.xz
+8fd4ed4274b3ae3690a567a62315639f615ce8ec262e040ea90747f18a143dbc  Aoyin-Desktop-Pet-0.1.0-mac-arm64.tar.xz
+ad8170b7688306f102a09f7acf1cfa3f50bf5d1418d9b1a30c4af9ef8f8ce52e  Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe.00.part
+4aa889f5e9fa3ed14d44ebfb8ada309a5f37b4472d8628482acdb8fd29072cbd  Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe.01.part
+0ec3167cffa128caea8bd9c3997dd2062f97a2223c1875618dc02005317711d8  Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe.02.part
+24efb380bccdb7983d87fc7650169a0fef5d8264cadc0ded8fe2fccf1da2ae39  Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe.03.part
+ebad171b45c28b9d5b878635e01f07f828ef3d2b278c4c4b7685f056cd6e2fda  Aoyin-Desktop-Pet-0.1.0-mac-arm64.tar.xz.00.part
+3d5dc3468179a5e1b57b16745d313233f7f55bed41040e6061d6a8fe97e6f209  Aoyin-Desktop-Pet-0.1.0-mac-arm64.tar.xz.01.part
+f748dfc39602ec3ce2c0036282f3aa9a46e88ff93b3b8d95e987611666dfec13  Aoyin-Desktop-Pet-0.1.0-mac-arm64.tar.xz.02.part
+a99a53976acfaee831332381ef44ff18b55ba652517efaecf886109bfd49b479  Aoyin-Desktop-Pet-0.1.0-mac-x64.tar.xz.00.part
+93f1c8b73f4df1dc0d66322f9577dd2658e775deb45020afa37d3f37be9f4bf3  Aoyin-Desktop-Pet-0.1.0-mac-x64.tar.xz.01.part
+956936ea970d8905ba5ade994affae11242a3dd77307deced498b3e2f82cd82a  Aoyin-Desktop-Pet-0.1.0-mac-x64.tar.xz.02.part
+a662b43fd2e16d8d554b39312292d6d9a12b96cdd483aa73434338be40e7daf3  Aoyin-Desktop-Pet-0.1.0-mac-x64.tar.xz.03.part

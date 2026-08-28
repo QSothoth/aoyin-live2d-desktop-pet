@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "run_dir": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run",
+  "spritesheet": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/final/spritesheet.webp",
+  "validation": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/final/validation.json",
+  "contact_sheet": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/qa/contact-sheet.png",
+  "review": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/qa/review.json",
+  "package": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/resources/pets/aoyin",
+  "visual_qa": "pass",
+  "chroma_cleanup_threshold": 150
+}

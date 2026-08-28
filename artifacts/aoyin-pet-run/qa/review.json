@@ -1,0 +1,962 @@
+{
+  "ok": true,
+  "frames_root": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames",
+  "errors": [],
+  "warnings": [],
+  "rows": [
+    {
+      "state": "idle",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13054,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13136,
+          "bbox": [
+            44,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13121,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13100,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 7
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13072,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 7
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/idle/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13084,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 3
+        }
+      ]
+    },
+    {
+      "state": "running-right",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14329,
+          "bbox": [
+            29,
+            5,
+            162,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 31
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14120,
+          "bbox": [
+            27,
+            5,
+            164,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 20
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13520,
+          "bbox": [
+            30,
+            5,
+            161,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 18
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13871,
+          "bbox": [
+            28,
+            5,
+            163,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 19
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14684,
+          "bbox": [
+            27,
+            5,
+            164,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 21
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13442,
+          "bbox": [
+            28,
+            5,
+            163,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 16
+        },
+        {
+          "index": 6,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15073,
+          "bbox": [
+            26,
+            5,
+            165,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 17
+        },
+        {
+          "index": 7,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-right/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13463,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 12
+        }
+      ]
+    },
+    {
+      "state": "running-left",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14259,
+          "bbox": [
+            30,
+            5,
+            161,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 23
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13890,
+          "bbox": [
+            30,
+            5,
+            161,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 15
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13406,
+          "bbox": [
+            32,
+            5,
+            159,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 16
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13944,
+          "bbox": [
+            27,
+            5,
+            164,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 17
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14666,
+          "bbox": [
+            27,
+            5,
+            165,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 11
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13513,
+          "bbox": [
+            28,
+            5,
+            164,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 15
+        },
+        {
+          "index": 6,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15089,
+          "bbox": [
+            26,
+            5,
+            165,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 17
+        },
+        {
+          "index": 7,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running-left/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13479,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 10
+        }
+      ]
+    },
+    {
+      "state": "waving",
+      "expected_frames": 4,
+      "actual_frames": 4,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waving/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13285,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waving/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13638,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waving/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13569,
+          "bbox": [
+            45,
+            5,
+            147,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 1
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waving/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13397,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 3
+        }
+      ]
+    },
+    {
+      "state": "jumping",
+      "expected_frames": 5,
+      "actual_frames": 5,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/jumping/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19762,
+          "bbox": [
+            13,
+            5,
+            178,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 23
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/jumping/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19366,
+          "bbox": [
+            15,
+            5,
+            177,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 11
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/jumping/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19434,
+          "bbox": [
+            16,
+            5,
+            176,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 20
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/jumping/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16059,
+          "bbox": [
+            25,
+            5,
+            167,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/jumping/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 21384,
+          "bbox": [
+            9,
+            5,
+            182,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 31
+        }
+      ]
+    },
+    {
+      "state": "failed",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13960,
+          "bbox": [
+            40,
+            5,
+            152,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 14085,
+          "bbox": [
+            40,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 7
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15103,
+          "bbox": [
+            33,
+            5,
+            158,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 14
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15582,
+          "bbox": [
+            31,
+            5,
+            160,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 16
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 17073,
+          "bbox": [
+            26,
+            5,
+            166,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 23
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 18731,
+          "bbox": [
+            24,
+            5,
+            167,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 20
+        },
+        {
+          "index": 6,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 22497,
+          "bbox": [
+            13,
+            5,
+            178,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 52
+        },
+        {
+          "index": 7,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/failed/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 23026,
+          "bbox": [
+            5,
+            15,
+            187,
+            193
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 48
+        }
+      ]
+    },
+    {
+      "state": "waiting",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12565,
+          "bbox": [
+            47,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 10
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12515,
+          "bbox": [
+            46,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 8
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12710,
+          "bbox": [
+            47,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 2
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13538,
+          "bbox": [
+            38,
+            5,
+            154,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12364,
+          "bbox": [
+            47,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/waiting/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12351,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 8
+        }
+      ]
+    },
+    {
+      "state": "running",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12763,
+          "bbox": [
+            47,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 6
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12626,
+          "bbox": [
+            47,
+            5,
+            144,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 10
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12791,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13261,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12776,
+          "bbox": [
+            48,
+            5,
+            144,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/running/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12726,
+          "bbox": [
+            47,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 9
+        }
+      ]
+    },
+    {
+      "state": "review",
+      "expected_frames": 6,
+      "actual_frames": 6,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12956,
+          "bbox": [
+            45,
+            5,
+            146,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 5
+        },
+        {
+          "index": 1,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 13499,
+          "bbox": [
+            41,
+            5,
+            151,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 2,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12705,
+          "bbox": [
+            43,
+            5,
+            148,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 3,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12683,
+          "bbox": [
+            48,
+            5,
+            144,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 4,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12818,
+          "bbox": [
+            48,
+            5,
+            144,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 4
+        },
+        {
+          "index": 5,
+          "file": "/workspace/scratch/73a8f07d72f9/aoyin-live2d-desktop-pet/artifacts/aoyin-pet-run/frames/review/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 12732,
+          "bbox": [
+            46,
+            5,
+            145,
+            203
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/*
+!dist/*.part
+!dist/assemble-windows.bat
+!dist/assemble-macos.sh
+!dist/SHA256SUMS.txt
+artifacts/aoyin-pet-run/decoded/
+artifacts/aoyin-pet-run/frames/
+artifacts/aoyin-pet-run/prompts/
+artifacts/aoyin-pet-run/references/layout-guides/
+artifacts/aoyin-pet-run/imagegen-jobs.json
+artifacts/aoyin-pet-run/final/spritesheet.png

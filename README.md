@@ -1,22 +1,59 @@
-# 敖尹 Q 版 Live2D 桌宠
+# 敖隐桌宠
 
-本仓库正在按**原创 Q 版角色设计 → 分层美术 → Cubism Editor 建模 → `.moc3` 导出 → 跨平台桌宠宿主**的正规流程重建。
+一个面向 Windows 与 macOS 的透明桌面宠物。角色资产严格依据仓库内的敖隐设定图制作，并遵循 OpenAI `hatch-pet` 的 8×9 动画图集规范；没有使用 SVG、几何占位图或代码绘制角色。
 
-## 当前事实状态
+## 已实现
 
-- 角色视觉唯一基准：`art/canonical/aoyin-q-design-reference.png`。
-- 目标是该 Q 版角色本身，不使用官方游戏原画作为运行贴图。
-- 不使用 Haruto 或其他样例模型换皮冒充定制模型。
-- 当前尚未产生新的定制 `.moc3`，因此不会把样例骨架称为成品。
-- 仓库不包含 GitHub Actions；所有构建与验证只在本地/当前沙箱执行。
+- 9 种语义动画：待机、向右/向左拖动、挥手、跳跃、失败/困倦、等待回应、专注工作、审阅。
+- 透明、置顶、跨桌面窗口；支持拖动、单击、双击与右键菜单。
+- 喂罐头、摸头、陪伴工作、审阅、等待回应等互动。
+- 小/标准/大三档尺寸，锁定位置，回到屏幕右下角，托盘显示/隐藏。
+- 可选 45 分钟休息提醒与开机启动。
+- 同一份 `resources/pets/aoyin/pet.json + spritesheet.webp` 也符合 Codex pet 包结构。
 
-## 交付门槛
+## 下载与运行
 
-只有当以下文件真实存在并通过本地预览后，才发布版本：
+构建制品位于仓库的 `dist/` 目录。受 GitHub 插件单次传输限制，每个平台拆成 3–4 个分卷；下载对应平台的全部 `.part` 文件与重组脚本即可：
 
-1. 分层 PSD 或等价的完整分层源文件；
-2. Cubism `.cmo3` 工程；
-3. 导出的 `.moc3`、纹理、物理和动作文件；
-4. 摘下/戴回眼镜的独立部件与动作；
-5. Windows 与 macOS 本地宿主程序；
-6. 实际录屏/截图，而不是概念海报。
+- Windows：在 `dist/` 双击 `assemble-windows.bat`，得到 `Aoyin-Desktop-Pet-0.1.0-Windows-x64.exe`，再双击运行。
+- macOS：在 `dist/` 执行 `sh assemble-macos.sh`；脚本会按当前 Mac 架构生成对应 `.tar.xz` 并解压，随后把 `.app` 拖入“应用程序”。也可传入 `arm64` 或 `x64` 明确选择。
+
+重组后可使用 `SHA256SUMS.txt` 核对完整制品与每个分卷。
+
+当前样品没有 Apple Developer ID / Windows EV 代码签名。macOS 首次打开若被 Gatekeeper 阻止，请在“系统设置 → 隐私与安全性”中选择仍要打开；Windows SmartScreen 可能要求选择“更多信息 → 仍要运行”。
+
+## 交互
+
+| 操作 | 敖隐的反应 |
+|---|---|
+| 单击 | 挥手回应 |
+| 双击 | 跳起来 |
+| 拖向左/右 | 对应方向的奔跑动作 |
+| 右键 | 打开完整互动菜单 |
+| 18 分钟不理他 | 耳朵垂下、蜷起来小憩 |
+| 托盘单击 | 显示或隐藏 |
+
+## 本地开发
+
+要求 Node.js 20+。
+
+```bash
+npm install
+npm test
+npm start
+```
+
+只在本机打包，不需要也不包含 GitHub Actions：
+
+```bash
+npm run pack:win
+npm run pack:mac
+```
+
+## 资产 QA
+
+`artifacts/aoyin-pet-run/qa/` 保存最终 contact sheet 与逐行动画预览；`final/validation.json` 保存确定性图集校验结果。角色一致性标准记录于 `docs/CHARACTER_SPEC.md`。
+
+## 许可
+
+应用源代码采用 MIT License。敖隐角色设定、参考图、生成角色资产和相关美术素材不随 MIT License 授权，权利由其原权利人保留，不得据此进行商业再分发。
