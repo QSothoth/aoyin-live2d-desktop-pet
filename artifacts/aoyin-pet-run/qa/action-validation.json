@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "warnings": [],
+  "actions": {
+    "glasses-wipe": {
+      "frames": 6,
+      "width": 1152,
+      "height": 208,
+      "transparent_rgb_residue": 0
+    },
+    "edge-peek": {
+      "frames": 6,
+      "width": 1152,
+      "height": 208,
+      "transparent_rgb_residue": 0
+    },
+    "tail-groom": {
+      "frames": 6,
+      "width": 1152,
+      "height": 208,
+      "transparent_rgb_residue": 0
+    },
+    "wolf-transform": {
+      "frames": 8,
+      "width": 1536,
+      "height": 208,
+      "transparent_rgb_residue": 0
+    },
+    "wolf-idle": {
+      "frames": 8,
+      "width": 1536,
+      "height": 208,
+      "transparent_rgb_residue": 0
+    }
+  }
+}

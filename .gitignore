@@ -1,4 +1,6 @@
 node_modules/
+__pycache__/
+resources/pets/aoyin/actions/*-source.png
 dist/*
 !dist/*.part
 !dist/assemble-windows.bat

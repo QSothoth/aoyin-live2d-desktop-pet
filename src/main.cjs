@@ -1,12 +1,15 @@
 const { app, BrowserWindow, Menu, Tray, ipcMain, nativeImage, screen } = require('electron');
 const path = require('node:path');
+const { classifyEdge, randomBetween } = require('./behavior-policy.cjs');
 
 let petWindow;
 let tray;
 let locked = false;
 let petScale = 1.25;
 let breakReminderEnabled = false;
+let autonomyEnabled = true;
 let breakReminderTimer;
+let roamingTimer;
 
 const BASE_SIZE = { width: 230, height: 270 };
 
@@ -37,12 +40,58 @@ function play(state, duration) {
   petWindow?.webContents.send('pet:play', { state, duration });
 }
 
+function playCustom(name) {
+  petWindow?.webContents.send('pet:custom', { name });
+}
+
+function currentEnvironment() {
+  if (!petWindow) return null;
+  const bounds = petWindow.getBounds();
+  const display = screen.getDisplayMatching(bounds);
+  return { bounds, workArea: display.workArea, edge: classifyEdge(bounds, display.workArea) };
+}
+
+function sendEnvironment(reason = 'update') {
+  const environment = currentEnvironment();
+  if (environment) petWindow.webContents.send('pet:environment', { ...environment, reason });
+}
+
 function setScale(nextScale) {
   petScale = nextScale;
   const [x, y] = petWindow.getPosition();
   const size = windowSize();
   petWindow.setBounds({ x, y, ...size }, true);
   petWindow.webContents.send('pet:scale', petScale);
+  sendEnvironment('scale');
+}
+
+function stopRoam() {
+  clearInterval(roamingTimer);
+  roamingTimer = undefined;
+}
+
+function roam() {
+  if (!petWindow || locked || roamingTimer) return;
+  const start = petWindow.getBounds();
+  const area = screen.getDisplayMatching(start).workArea;
+  const maxX = area.x + area.width - start.width;
+  const minX = area.x;
+  const direction = start.x > area.x + area.width / 2 ? -1 : 1;
+  const distance = Math.min(randomBetween(70, 180), direction > 0 ? maxX - start.x : start.x - minX);
+  if (distance < 30) return;
+  const duration = Math.max(1600, distance * 13);
+  const startedAt = Date.now();
+  petWindow.webContents.send('pet:roam-start', { direction, duration });
+  roamingTimer = setInterval(() => {
+    const progress = Math.min(1, (Date.now() - startedAt) / duration);
+    const eased = 0.5 - Math.cos(progress * Math.PI) / 2;
+    petWindow.setPosition(Math.round(start.x + direction * distance * eased), start.y);
+    if (progress >= 1) {
+      stopRoam();
+      petWindow.webContents.send('pet:roam-end');
+      sendEnvironment('roam');
+    }
+  }, 40);
 }
 
 function setBreakReminder(enabled) {
@@ -67,6 +116,9 @@ function interactionMenu() {
     { label: '陪我工作', click: () => { play('running'); showBubble('专心。我在。', 3600); } },
     { label: '帮我审阅', click: () => { play('review'); showBubble('给我看看。'); } },
     { label: '需要我回应', click: () => { play('waiting'); showBubble('嗯？我听着。'); } },
+    { label: '擦擦眼镜', click: () => playCustom('glasses-wipe') },
+    { label: '变成狼', click: () => playCustom('wolf-sequence') },
+    { label: '去走走', click: () => roam() },
     { type: 'separator' },
     {
       label: '大小',
@@ -77,6 +129,7 @@ function interactionMenu() {
       ]
     },
     { label: '锁定位置', type: 'checkbox', checked: locked, click: (item) => { locked = item.checked; petWindow.webContents.send('pet:lock', locked); rebuildMenu(); } },
+    { label: '自主活动', type: 'checkbox', checked: autonomyEnabled, click: (item) => { autonomyEnabled = item.checked; petWindow.webContents.send('pet:autonomy', autonomyEnabled); rebuildMenu(); } },
     { label: '45 分钟休息提醒', type: 'checkbox', checked: breakReminderEnabled, click: (item) => setBreakReminder(item.checked) },
     { label: '开机启动', type: 'checkbox', checked: app.getLoginItemSettings().openAtLogin, click: (item) => app.setLoginItemSettings({ openAtLogin: item.checked }) },
     { type: 'separator' },
@@ -116,7 +169,7 @@ function createWindow() {
   petWindow.once('ready-to-show', () => {
     placeAtBottomRight(petWindow);
     petWindow.showInactive();
-    showBubble('我会安静待着。');
+    sendEnvironment('launch');
   });
   petWindow.on('closed', () => { petWindow = undefined; });
 }
@@ -145,5 +198,11 @@ app.on('window-all-closed', () => {});
 ipcMain.on('pet:context-menu', () => Menu.buildFromTemplate(interactionMenu()).popup({ window: petWindow }));
 ipcMain.on('pet:drag-start', () => petWindow?.webContents.send('pet:lock', locked));
 ipcMain.on('pet:move', (_event, { x, y }) => {
-  if (!locked && petWindow) petWindow.setPosition(Math.round(x), Math.round(y));
+  if (!locked && petWindow) {
+    stopRoam();
+    petWindow.setPosition(Math.round(x), Math.round(y));
+  }
 });
+ipcMain.on('pet:drag-end', () => sendEnvironment('drop'));
+ipcMain.on('pet:request-roam', () => roam());
+ipcMain.handle('pet:get-environment', () => currentEnvironment());

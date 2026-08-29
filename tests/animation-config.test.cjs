@@ -22,3 +22,10 @@ test('frameRect clamps invalid frame indexes', () => {
   assert.equal(frameRect('idle', -2).x, 0);
   assert.equal(frameRect('idle', 99).x, 5 * 192);
 });
+
+test('idle uses sparse variable timing and drag gait is restrained', () => {
+  assert.equal(ANIMATIONS.idle.variableTiming, true);
+  assert.equal(ANIMATIONS.idle.fps, 0);
+  assert.ok(ANIMATIONS['running-right'].fps <= 7);
+  assert.ok(ANIMATIONS['running-left'].fps <= 7);
+});

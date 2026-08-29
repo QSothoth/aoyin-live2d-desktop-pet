@@ -1,6 +1,6 @@
 {
   "name": "aoyin-desktop-pet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "敖隐：基于 hatch-pet 资产规范的跨平台透明桌宠",
   "main": "src/main.cjs",
   "author": "QSothoth",
@@ -22,9 +22,12 @@
     "productName": "Aoyin Desktop Pet",
     "artifactName": "Aoyin-Desktop-Pet-${version}-${os}-${arch}.${ext}",
     "asar": true,
+    "compression": "maximum",
+    "electronLanguages": ["zh-CN", "en-US"],
     "files": [
       "src/**/*",
       "resources/**/*",
+      "!resources/pets/aoyin/actions/*-source.png",
       "package.json"
     ],
     "directories": {
@@ -34,10 +37,12 @@
     "mac": {
       "category": "public.app-category.entertainment",
       "target": ["zip"],
+      "electronLanguages": ["zh-CN", "en-US"],
       "identity": null
     },
     "win": {
-      "target": ["portable"]
+      "target": ["portable"],
+      "electronLanguages": ["zh-CN", "en-US"]
     },
     "portable": {
       "artifactName": "Aoyin-Desktop-Pet-${version}-Windows-${arch}.exe"

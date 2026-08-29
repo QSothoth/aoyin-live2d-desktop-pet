@@ -4,7 +4,7 @@ html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background:
 body { font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
 #stage { position: relative; width: 100%; height: 100%; cursor: grab; }
 #stage.dragging { cursor: grabbing; }
-#pet {
+#pet, #action-pet {
   position: absolute;
   left: 50%;
   bottom: 0;
@@ -14,18 +14,21 @@ body { font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
   image-rendering: auto;
   filter: drop-shadow(0 3px 3px rgba(42, 18, 31, 0.12));
 }
+#action-pet { display: none; object-fit: contain; }
+#stage.action-mode #pet { display: none; }
+#stage.action-mode #action-pet { display: block; }
 #bubble {
   position: absolute;
   z-index: 2;
   left: 50%;
   top: 2px;
   max-width: 92%;
-  padding: 8px 12px;
+  padding: 7px 10px;
   border: 1px solid rgba(111, 42, 70, 0.22);
-  border-radius: 14px 14px 14px 4px;
-  background: rgba(255, 248, 250, 0.94);
+  border-radius: 12px 12px 12px 4px;
+  background: rgba(255, 250, 252, 0.9);
   color: #552334;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.35;
   box-shadow: 0 5px 18px rgba(61, 18, 37, 0.14);
   opacity: 0;
