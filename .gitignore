@@ -1,4 +1,5 @@
 node_modules/
+src/renderer/renderer.bundle.js
 __pycache__/
 resources/pets/aoyin/actions/*-source.png
 dist/*

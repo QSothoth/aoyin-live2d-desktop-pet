@@ -4,19 +4,20 @@ html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background:
 body { font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
 #stage { position: relative; width: 100%; height: 100%; cursor: grab; }
 #stage.dragging { cursor: grabbing; }
-#pet, #action-pet {
+#live2d-host, #sprite-pet {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: min(92%, 260px);
-  height: auto;
+  width: 100%;
+  height: 100%;
   transform: translateX(-50%);
-  image-rendering: auto;
   filter: drop-shadow(0 3px 3px rgba(42, 18, 31, 0.12));
 }
-#action-pet { display: none; object-fit: contain; }
-#stage.action-mode #pet { display: none; }
-#stage.action-mode #action-pet { display: block; }
+#live2d-host canvas { display: block; width: 100%; height: 100%; }
+#sprite-pet { object-fit: contain; image-rendering: auto; }
+#stage.live2d-mode #sprite-pet { display: none; }
+#stage.sprite-mode #live2d-host { display: none; }
+#render-status { display: none; }
 #bubble {
   position: absolute;
   z-index: 2;
