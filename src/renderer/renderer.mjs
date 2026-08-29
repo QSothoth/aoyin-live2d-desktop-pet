@@ -1,8 +1,9 @@
 import { Application, extensions } from 'pixi.js';
 import spriteFrame from '../sprite-frame.cjs';
+import renderSizing from '../render-sizing.cjs';
 
 const { CELL, actionFrameIndex, horizontalFrameRect } = spriteFrame;
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
+const { containRect, pixelSize } = renderSizing;
 const BASE_ANIMATIONS = Object.freeze({
   idle: { row: 0, frames: 6, fps: 0, loop: true, variableTiming: true },
   'running-right': { row: 1, frames: 8, fps: 6.5, loop: true },
@@ -48,6 +49,8 @@ let nextGlassesAt = Date.now() + randomBetween(6 * 60_000, 14 * 60_000);
 let nextWolfAt = Date.now() + randomBetween(18 * 60_000, 36 * 60_000);
 let lastAmbient = null;
 let lastSpeechAt = 0;
+let lastPointerAt = 0;
+let nextGazeAt = Date.now() + randomBetween(3500, 8000);
 
 function randomBetween(min, max) { return Math.round(min + Math.random() * (max - min)); }
 function pick(items) { return items[Math.floor(Math.random() * items.length)]; }
@@ -67,7 +70,17 @@ class SpriteRenderer {
   start() {
     stage.classList.add('sprite-mode');
     stage.classList.remove('live2d-mode');
+    this.resize();
+    this.resizeObserver = new ResizeObserver(() => this.resize());
+    this.resizeObserver.observe(stage);
     requestAnimationFrame((now) => this.draw(now));
+  }
+
+  resize() {
+    const size = pixelSize(stage.clientWidth, stage.clientHeight, window.devicePixelRatio || 1);
+    if (spriteCanvas.width !== size.pixelWidth) spriteCanvas.width = size.pixelWidth;
+    if (spriteCanvas.height !== size.pixelHeight) spriteCanvas.height = size.pixelHeight;
+    this.dpr = size.dpr;
   }
 
   setState(next) {
@@ -135,18 +148,40 @@ class SpriteRenderer {
     }
     spriteContext.clearRect(0, 0, spriteCanvas.width, spriteCanvas.height);
     if (source.complete && source.naturalWidth) {
-      spriteContext.drawImage(source, sourceX, sourceY, CELL.width, CELL.height, 0, 0, spriteCanvas.width, spriteCanvas.height);
+      // Raster fallback frames stay at native logical size. Stretching every
+      // action to the window was the source of the large-soft-small pulse.
+      const target = containRect(
+        CELL.width,
+        CELL.height,
+        spriteCanvas.width,
+        spriteCanvas.height,
+        this.dpr || 1
+      );
+      spriteContext.drawImage(
+        source,
+        sourceX,
+        sourceY,
+        CELL.width,
+        CELL.height,
+        target.x,
+        target.y,
+        target.width,
+        target.height
+      );
     }
     requestAnimationFrame((time) => this.draw(time));
   }
 }
 
 class CubismRenderer {
-  constructor(app, model, manifest) {
+  constructor(app, model, manifest, sourceBounds) {
     this.app = app;
     this.model = model;
     this.manifest = manifest;
+    this.sourceBounds = sourceBounds;
     this.motionToken = 0;
+    this.lastSize = { width: 0, height: 0 };
+    this.resizeFrame = 0;
   }
 
   static async create() {
@@ -159,31 +194,54 @@ class CubismRenderer {
     // time. Import it only after Core is present so the sprite fallback remains usable.
     const { Live2DModel, Live2DPlugin } = await import('untitled-pixi-live2d-engine/cubism');
     extensions.add(Live2DPlugin);
+    const initialSize = pixelSize(host.clientWidth, host.clientHeight, window.devicePixelRatio || 1);
     const app = new Application();
     await app.init({
-      resizeTo: host,
+      width: initialSize.cssWidth,
+      height: initialSize.cssHeight,
       backgroundAlpha: 0,
       antialias: true,
       autoDensity: true,
-      resolution: DPR,
+      resolution: initialSize.dpr,
       preference: 'webgl'
     });
     host.appendChild(app.canvas);
     const modelUrl = new URL(manifest.model, new URL(manifestUrl, window.location.href)).href;
-    const model = await Live2DModel.from(modelUrl, { textureOptions: { lod: 'full' } });
+    const model = await Live2DModel.from(modelUrl, {
+      textureOptions: { lod: 'full' },
+      autoFocus: false,
+      autoHitTest: false
+    });
+    const sourceBounds = { width: Math.max(1, model.width), height: Math.max(1, model.height) };
     model.anchor.set(manifest.fit?.anchorX ?? 0.5, manifest.fit?.anchorY ?? 1);
     app.stage.addChild(model);
-    const instance = new CubismRenderer(app, model, manifest);
-    instance.fit();
-    window.addEventListener('resize', () => instance.fit());
+    const instance = new CubismRenderer(app, model, manifest, sourceBounds);
+    instance.resize();
+    instance.resizeObserver = new ResizeObserver(() => instance.scheduleResize());
+    instance.resizeObserver.observe(host);
     stage.classList.add('live2d-mode');
     stage.classList.remove('sprite-mode');
     return instance;
   }
 
+  scheduleResize() {
+    cancelAnimationFrame(this.resizeFrame);
+    this.resizeFrame = requestAnimationFrame(() => this.resize());
+  }
+
+  resize() {
+    const size = pixelSize(host.clientWidth, host.clientHeight, window.devicePixelRatio || 1);
+    if (size.cssWidth === this.lastSize.width && size.cssHeight === this.lastSize.height) return;
+    this.lastSize = { width: size.cssWidth, height: size.cssHeight };
+    // A single resize owner keeps the backing buffer and model fit atomic.
+    this.app.renderer.resolution = size.dpr;
+    this.app.renderer.resize(size.cssWidth, size.cssHeight);
+    this.fit();
+  }
+
   fit() {
-    const naturalWidth = Math.max(1, this.model.width / Math.max(this.model.scale.x, 0.0001));
-    const naturalHeight = Math.max(1, this.model.height / Math.max(this.model.scale.y, 0.0001));
+    const naturalWidth = this.sourceBounds.width;
+    const naturalHeight = this.sourceBounds.height;
     const scale = Math.min(
       (this.app.screen.width * (this.manifest.fit?.widthRatio ?? 0.94)) / naturalWidth,
       (this.app.screen.height * (this.manifest.fit?.heightRatio ?? 0.98)) / naturalHeight
@@ -192,6 +250,19 @@ class CubismRenderer {
     this.model.position.set(
       this.app.screen.width * (this.manifest.fit?.x ?? 0.5),
       this.app.screen.height * (this.manifest.fit?.y ?? 1)
+    );
+  }
+
+  focusAt(x, y, instant = false) { this.model.focus(x, y, instant); }
+
+  focusNeutral(instant = false) {
+    this.model.focus(this.app.screen.width / 2, this.app.screen.height * 0.48, instant);
+  }
+
+  focusWander() {
+    this.model.focus(
+      this.app.screen.width * randomBetween(25, 75) / 100,
+      this.app.screen.height * randomBetween(25, 62) / 100
     );
   }
 
@@ -302,12 +373,20 @@ stage.addEventListener('pointerdown', (event) => {
   window.aoyinDesktop.dragStart();
 });
 stage.addEventListener('pointermove', (event) => {
-  if (!dragging || locked) return;
+  if (!dragging) {
+    lastPointerAt = Date.now();
+    renderer?.focusAt?.(event.offsetX, event.offsetY);
+    return;
+  }
+  if (locked) return;
   const deltaX = event.screenX - previousPointerX;
   dragDistance += Math.abs(deltaX);
   if (Math.abs(deltaX) > 5) setState(deltaX > 0 ? 'running-right' : 'running-left');
   previousPointerX = event.screenX;
   window.aoyinDesktop.move({ x: event.screenX - dragOffset.x, y: event.screenY - dragOffset.y });
+});
+stage.addEventListener('pointerleave', () => {
+  if (!dragging) renderer?.focusNeutral?.();
 });
 stage.addEventListener('pointerup', (event) => {
   if (!dragging) return;
@@ -333,6 +412,17 @@ stage.addEventListener('dblclick', () => playCustom('tail-groom'));
 
 setInterval(() => {
   const now = Date.now();
+  if (
+    autonomyEnabled &&
+    now >= nextGazeAt &&
+    now - lastPointerAt > 5000 &&
+    !dragging &&
+    !roaming &&
+    state === 'idle'
+  ) {
+    renderer?.focusWander?.();
+    nextGazeAt = now + randomBetween(4000, 9500);
+  }
   if (autonomyEnabled && now >= nextAmbientAt) ambientBehavior();
   if (autonomyEnabled && now >= nextRoamAt && !dragging && !roaming && !edgeState && state === 'idle') {
     window.aoyinDesktop.requestRoam();

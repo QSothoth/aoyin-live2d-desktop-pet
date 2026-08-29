@@ -4,6 +4,21 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { actionFrameIndex, horizontalFrameRect } = require('../src/sprite-frame.cjs');
 const { resizeKeepingFeet } = require('../src/window-geometry.cjs');
+const { containRect, pixelSize } = require('../src/render-sizing.cjs');
+
+test('raster fallback keeps native logical size on HiDPI canvases', () => {
+  assert.deepEqual(pixelSize(236, 278, 2), {
+    cssWidth: 236,
+    cssHeight: 278,
+    pixelWidth: 472,
+    pixelHeight: 556,
+    dpr: 2
+  });
+  const target = containRect(192, 208, 472, 556, 2);
+  assert.equal(target.width, 384);
+  assert.equal(target.height, 416);
+  assert.equal(target.scale, 2);
+});
 
 test('action strips are sampled by source rectangle without oversized DOM images', () => {
   assert.equal(actionFrameIndex(0, 4800, 8), 0);
@@ -31,4 +46,7 @@ test('Cubism is loaded lazily so a missing proprietary Core can fall back safely
   assert.ok(coreLoad > 0);
   assert.ok(engineImport > coreLoad);
   assert.doesNotMatch(source, /^import .*untitled-pixi-live2d-engine/m);
+  assert.doesNotMatch(source, /resizeTo\s*:/);
+  assert.match(source, /new ResizeObserver/);
+  assert.match(source, /sourceBounds/);
 });

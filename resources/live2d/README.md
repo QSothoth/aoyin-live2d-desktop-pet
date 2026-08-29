@@ -15,3 +15,11 @@
 动作组映射在 `pet.live2d.json` 中。建模时建议提供 `Idle`、`TapHead`、
 `TapBody`、`Walk`、`Think`、`Glasses`、`Tail`、`Edge` 和 `Wolf` 组；不存在的
 动作会被安全忽略并回到 Idle。
+
+## 建模验收重点
+
+- `Idle` 至少做 3 条：轻呼吸/重心微移、耳尾异步反应、短暂环顾。不要把眨眼烘焙成高频循环，交给 Cubism EyeBlink。
+- 参数建议保留 `ParamAngleX/Y/Z`、`ParamEyeBallX/Y`、`ParamBodyAngleX`、呼吸参数和耳尾物理。运行时会让视线跟随鼠标，并在无人操作时低频游移。
+- `Glasses` 应包含摘下、擦拭、重新戴好完整闭环；`Wolf` 至少包含变身与狼形态待机，不能只做一次贴图切换。
+- `Edge` 的四个方向分别制作并保持末帧，拖到屏幕边缘后持续趴看，离开边缘才恢复待机。
+- 纹理建议 2048px 或 4096px；不要在 motion 内写模型整体 Scale。窗口尺寸只由宿主控制，以免再次出现动作开始时突然放大。
