@@ -1,30 +1,39 @@
 # 敖隐桌宠
 
-一个面向 Windows 与 macOS 的透明桌面宠物。角色资产严格依据仓库内的敖隐设定图制作，并遵循 OpenAI `hatch-pet` 的 8×9 动画图集规范；没有使用 SVG、几何占位图或代码绘制角色。
+一个面向 Windows 与 macOS 的透明桌面宠物。运行时优先使用 Live2D Cubism 模型；在模型尚未安装时，以仓库内遵循 OpenAI `hatch-pet` 8×9 图集规范的敖隐精灵资产安全回退。
 
-## 0.2.0：灵动行为版
+## 0.3.0：Live2D 渲染重构
 
-- 保留 hatch-pet 的 9 种基础语义动画，新增摘镜擦拭、整理尾巴、边缘趴看、人形变狼与狼形自主活动。
-- 稀疏眨眼（约 7–16 秒一次），拖动步态由 12 FPS 降到 6.5 FPS；不再持续眨眼或高速踏步。
-- 自主行为导演：每 45–110 秒选择一次安静动作，每 4–9 分钟短距离散步；所有行为都有冷却且可被用户操作打断。
-- 拖到屏幕工作区边缘后会蹲下、趴伏并抬眼观察；狼形态约每 15–30 分钟偶发一次。
-- 气泡改为低频、短句、带 10 分钟冷却；启动时不再弹出固定欢迎气泡。
+- 渲染器优先加载 Cubism 3/4/5 `.model3.json`，支持物理、表情、动作组和高 DPI WebGL 渲染。
+- 使用 PixiJS 8 的 `autoDensity + devicePixelRatio`，模型按自然边界一次拟合；窗口缩放保留脚底锚点，不再做瞬时拉伸动画。
+- 修复附加动作把 6–8 帧横条放大到窗口 552%–736% 的根因。精灵回退现在只在 Canvas 内裁取单帧，DOM 尺寸始终稳定。
+- 自主行为降频并防止连续重复；直接操作、拖动、边缘姿态、自主动作具有明确优先级。
+- 边缘行为细分为左、右、上、下四组；Live2D 模型可以分别制作趴看、探头或悬挂姿态。
+- 点击按头部/身体分流；擦眼镜、整理尾巴、狼形态都映射为独立 Cubism Motion Group。
+- 缺少 Live2D 模型或 Cubism Core 时自动回退到现有精灵素材，不会黑屏。
 - 透明、置顶、跨桌面窗口；支持拖动、单击、双击与右键菜单。
 - 右键可立即预览擦眼镜、狼形态与自主散步，也可关闭“自主活动”。
 - 小/标准/大三档尺寸，锁定位置，回到屏幕右下角，托盘显示/隐藏。
 - 可选 45 分钟休息提醒与开机启动。
 - 同一份 `resources/pets/aoyin/pet.json + spritesheet.webp` 也符合 Codex pet 包结构。
 
-## 下载与运行
+## 本地运行（当前 0.3.0 源码）
 
-构建制品位于仓库的 `dist/` 目录。受 GitHub 插件单次传输限制，每个平台拆成 3–4 个分卷；下载对应平台的全部 `.part` 文件与重组脚本即可：
+要求 Node.js 20+：
 
-- Windows：在 `dist/` 双击 `assemble-windows.bat`，得到 `Aoyin-Desktop-Pet-0.2.0-Windows-x64.exe`，再双击运行。
-- macOS：在 `dist/` 执行 `sh assemble-macos.sh`；脚本会按当前 Mac 架构生成对应 `.tar.xz` 并解压，随后把 `.app` 拖入“应用程序”。也可传入 `arm64` 或 `x64` 明确选择。
+```bash
+npm install
+npm test
+npm start
+```
 
-重组后可使用 `SHA256SUMS.txt` 核对完整制品与每个分卷。
+`npm start` 会先生成浏览器渲染包。本次只提交源码，不生成新的 Windows/macOS 安装包；`dist/` 中已有文件仍是旧版本制品。
 
-当前样品没有 Apple Developer ID / Windows EV 代码签名。macOS 首次打开若被 Gatekeeper 阻止，请在“系统设置 → 隐私与安全性”中选择仍要打开；Windows SmartScreen 可能要求选择“更多信息 → 仍要运行”。
+## 放入敖隐 Live2D 模型
+
+将 Cubism Editor 导出的完整模型放进 `resources/live2d/aoyin/`，入口命名为 `aoyin.model3.json`；将官方 Cubism SDK for Web 的 `live2dcubismcore.min.js` 放进 `resources/live2d/runtime/`。动作组映射可在 `resources/live2d/aoyin/pet.live2d.json` 调整，详细清单见 `resources/live2d/README.md`。
+
+`.moc3` 是经过分层、参数绑定和物理设置后由 Cubism Editor 导出的模型数据，不能从当前几张动作条带可靠推导。因此仓库已经完成真正 Live2D 的运行管线与行为契约，但最终的敖隐形变质量仍由后续建模资产决定。
 
 ## 交互
 
@@ -38,17 +47,9 @@
 | 右键 | 打开完整互动菜单 |
 | 托盘单击 | 显示或隐藏 |
 
-## 本地开发
+## 本地打包
 
-要求 Node.js 20+。
-
-```bash
-npm install
-npm test
-npm start
-```
-
-只在本机打包，不需要也不包含 GitHub Actions：
+不需要也不包含 GitHub Actions：
 
 ```bash
 npm run pack:win

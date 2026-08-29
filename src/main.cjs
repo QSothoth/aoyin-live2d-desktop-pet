@@ -1,17 +1,18 @@
 const { app, BrowserWindow, Menu, Tray, ipcMain, nativeImage, screen } = require('electron');
 const path = require('node:path');
 const { classifyEdge, randomBetween } = require('./behavior-policy.cjs');
+const { resizeKeepingFeet } = require('./window-geometry.cjs');
 
 let petWindow;
 let tray;
 let locked = false;
-let petScale = 1.25;
+let petScale = 1;
 let breakReminderEnabled = false;
 let autonomyEnabled = true;
 let breakReminderTimer;
 let roamingTimer;
 
-const BASE_SIZE = { width: 230, height: 270 };
+const BASE_SIZE = { width: 236, height: 278 };
 
 function windowSize() {
   return {
@@ -57,10 +58,13 @@ function sendEnvironment(reason = 'update') {
 }
 
 function setScale(nextScale) {
+  if (!petWindow || petScale === nextScale) return;
   petScale = nextScale;
-  const [x, y] = petWindow.getPosition();
+  const previous = petWindow.getBounds();
   const size = windowSize();
-  petWindow.setBounds({ x, y, ...size }, true);
+  // Preserve the character's feet and horizontal centre. Electron's animated
+  // setBounds briefly stretches transparent windows on macOS, so resize atomically.
+  petWindow.setBounds(resizeKeepingFeet(previous, size), false);
   petWindow.webContents.send('pet:scale', petScale);
   sendEnvironment('scale');
 }
@@ -123,9 +127,9 @@ function interactionMenu() {
     {
       label: '大小',
       submenu: [
-        { label: '小巧', type: 'radio', checked: petScale === 0.95, click: () => setScale(0.95) },
-        { label: '标准', type: 'radio', checked: petScale === 1.25, click: () => setScale(1.25) },
-        { label: '大只', type: 'radio', checked: petScale === 1.55, click: () => setScale(1.55) }
+        { label: '小巧', type: 'radio', checked: petScale === 0.85, click: () => setScale(0.85) },
+        { label: '标准', type: 'radio', checked: petScale === 1, click: () => setScale(1) },
+        { label: '大只', type: 'radio', checked: petScale === 1.2, click: () => setScale(1.2) }
       ]
     },
     { label: '锁定位置', type: 'checkbox', checked: locked, click: (item) => { locked = item.checked; petWindow.webContents.send('pet:lock', locked); rebuildMenu(); } },
@@ -150,6 +154,7 @@ function createWindow() {
   petWindow = new BrowserWindow({
     ...size,
     transparent: true,
+    useContentSize: true,
     frame: false,
     resizable: false,
     hasShadow: false,

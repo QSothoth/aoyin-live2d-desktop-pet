@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "model": "aoyin.model3.json",
+  "runtime": "../runtime/live2dcubismcore.min.js",
+  "fit": {
+    "anchorX": 0.5,
+    "anchorY": 1,
+    "x": 0.5,
+    "y": 1,
+    "widthRatio": 0.94,
+    "heightRatio": 0.98
+  },
+  "motions": {
+    "idle": [{ "group": "Idle", "index": 0, "priority": 1 }],
+    "waving": [{ "group": "TapBody", "index": 0, "priority": 2 }],
+    "jumping": [{ "group": "TapBody", "index": 1, "priority": 2 }],
+    "waiting": [{ "group": "Idle", "index": 1, "priority": 1 }],
+    "review": [{ "group": "Think", "index": 0, "priority": 2 }],
+    "running-left": [{ "group": "Walk", "index": 0, "priority": 2 }],
+    "running-right": [{ "group": "Walk", "index": 1, "priority": 2 }],
+    "head-pat": [{ "group": "TapHead", "index": 0, "priority": 3, "expression": "soft", "duration": 2600 }],
+    "body-poke": [{ "group": "TapBody", "index": 1, "priority": 3, "duration": 2200 }],
+    "glasses-wipe": [{ "group": "Glasses", "index": 0, "priority": 3, "duration": 4700 }],
+    "tail-groom": [{ "group": "Tail", "index": 0, "priority": 3, "duration": 5200 }],
+    "edge-left": [{ "group": "Edge", "index": 0, "priority": 3, "holdLast": true }],
+    "edge-right": [{ "group": "Edge", "index": 1, "priority": 3, "holdLast": true }],
+    "edge-top": [{ "group": "Edge", "index": 2, "priority": 3, "holdLast": true }],
+    "edge-bottom": [{ "group": "Edge", "index": 3, "priority": 3, "holdLast": true }],
+    "wolf-transform": [{ "group": "Wolf", "index": 0, "priority": 3, "duration": 5200 }],
+    "wolf-idle": [{ "group": "Wolf", "index": 1, "priority": 2, "duration": 12000 }]
+  }
+}
